@@ -1,0 +1,18 @@
+{
+  "name": "kindwiseoak",
+  "version": "1.0.0",
+  "description": "Telegram bot with ChatGPT",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "html-entities": "^2.3.3",
+    "node-telegram-bot-api": "^0.61.0",
+    "openai": "^3.2.1"
+  }
+}
