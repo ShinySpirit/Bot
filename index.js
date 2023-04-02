@@ -7,43 +7,20 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-// openai.api_key = process.env.OPENAI_API_KEY;
-// const bot = new TelegramBot(process.env.TG_API_KEY, { polling: true });
+const bot = new TelegramBot(process.env.TG_API_KEY, { polling: true });
 
-// bot.on('message', async (msg) => {
-//     const chatId = msg.chat.id;
-//     if (msg.text) {
-//         const response = await openai.completions.create({
-//             engine: 'davinci',
-//             prompt: msg.text,
-//             maxTokens: 60,
-//             n: 1,
-//             temperature: 0.5
-//         });
-//         const message = decode(response.data.choices[0].text);
-//         bot.sendMessage(chatId, message);
-//     }
-// });
+bot.on('message', async (msg) => {
+    const chatId = msg.chat.id;
+    if (msg.text) {
 
-async function sendRequest(msg) {
-    const response = await openai.createCompletion({
-        model: "text-davinci-003",
-        prompt: msg,
-        temperature: 0.6,
-        max_tokens: 200
-    });
-    console.log("Request done");
-    console.log(decode(response.data.choices[0].text));
-    // await openai.completions.create({
-    //     engine: 'davinci',
-    //     prompt: msg,
-    //     maxTokens: 60,
-    //     n: 1,
-    //     temperature: 0.5
-    // });
-    // const message = decode(response.data.choices[0].text);
-    const message = response;
-    return message;
-}
+        const response = await openai.createCompletion({
+            model: "text-davinci-003",
+            prompt: msg.text,
+            temperature: 0.6,
+            max_tokens: 500
+        });
 
-sendRequest("How to cook sushi?");
+        const message = decode(decode(response.data.choices[0].text));
+        bot.sendMessage(chatId, message);
+    }
+});
