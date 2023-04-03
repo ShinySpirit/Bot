@@ -7,7 +7,11 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-const bot = new TelegramBot(process.env.TG_API_KEY);
+const bot = new TelegramBot(process.env.TG_API_KEY, {
+    polling: {
+        params: { timeout: 2 }
+    }
+});
 
 bot.on('message', async (msg) => {
     const chatId = msg.chat.id;
