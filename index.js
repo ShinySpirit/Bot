@@ -8,8 +8,9 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 const bot = new TelegramBot(process.env.TG_API_KEY, {
-    polling: {
-        params: { timeout: 2 }
+    webHook: {
+        port: 3000,
+        host: "0.0.0.0"
     }
 });
 
