@@ -13,7 +13,7 @@ const bot = new TelegramBot(process.env.TG_API_KEY, {
         host: "0.0.0.0"
     }
 });
-bot.setWebHook("https://kindwiseoak.cyclic.app");
+bot.setWebHook("https://kindwiseoak.cyclic.app/bot" + process.env.TG_API_KEY);
 
 bot.on('message', async (msg) => {
     const chatId = msg.chat.id;
