@@ -9,7 +9,7 @@ const openai = new OpenAIApi(configuration);
 
 const bot = new TelegramBot(process.env.TG_API_KEY, {
     webHook: {
-        port: process.env.port || 3000,
+        port: 3000,
         host: "0.0.0.0"
     }
 });
