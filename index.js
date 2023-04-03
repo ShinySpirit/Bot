@@ -12,8 +12,6 @@ const bot = new TelegramBot(process.env.TG_API_KEY, { polling: true });
 bot.on('message', async (msg) => {
     const chatId = msg.chat.id;
     if (msg.text) {
-
-        bot.sendMessage(chatId, "message");
         const response = await openai.createCompletion({
             model: "text-davinci-003",
             prompt: msg.text,
