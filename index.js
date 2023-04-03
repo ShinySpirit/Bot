@@ -13,6 +13,9 @@ const bot = new TelegramBot(process.env.TG_API_KEY, {
         host: "0.0.0.0"
     }
 });
+bot.setWebHook(
+    `https://${process.env.HEROKU_APP_NAME}.herokuapp.com/bot${process.env.TG_API_KEY}`
+);
 
 bot.on('message', async (msg) => {
     const chatId = msg.chat.id;
