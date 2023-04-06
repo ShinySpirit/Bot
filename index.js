@@ -17,17 +17,19 @@ bot.setWebHook("https://kindwiseoak.cyclic.app/bot" + process.env.TG_API_KEY);
 
 bot.on('message', async (msg) => {
     const chatId = msg.chat.id;
+    bot.sendMessage(chatId, message + " - is your message");
+
     if (msg.text) {
-        // const response = await openai.createCompletion({
-        //     model: "text-davinci-003",
-        //     prompt: msg.text,
-        //     temperature: 0.6,
-        //     max_tokens: 500
-        // });
+        const response = await openai.createCompletion({
+            model: "text-davinci-003",
+            prompt: msg.text,
+            temperature: 0.6,
+            max_tokens: 500
+        });
 
-        // const message = decode(decode(response.data.choices[0].text));
-        // bot.sendMessage(chatId, message);
+        const message = decode(decode(response.data.choices[0].text));
+        bot.sendMessage(chatId, message);
 
-        bot.sendMessage(chatId, msg.text + " - is your message");
+
     }
 });
