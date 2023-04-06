@@ -28,6 +28,6 @@ bot.on('message', async (msg) => {
         // const message = decode(decode(response.data.choices[0].text));
         // bot.sendMessage(chatId, message);
 
-        bot.sendMessage(chatId, msg + " - is your message");
+        bot.sendMessage(chatId, msg.text + " - is your message");
     }
 });
