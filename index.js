@@ -7,14 +7,14 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-const bot = new TelegramBot(process.env.TG_API_KEY
-    // {
-    // webHook: {
-    //     port: 3000,
-    //     host: "0.0.0.0"
-    // }
-    // polling: true
-    // }
+const bot = new TelegramBot(process.env.TG_API_KEY,
+    {
+        webHook: {
+            port: 3000,
+            host: "0.0.0.0"
+        }
+        // polling: true
+    }
 );
 bot.setWebHook("https://kindwiseoak.cyclic.app/bot" + process.env.TG_API_KEY);
 
